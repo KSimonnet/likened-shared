@@ -1,0 +1,184 @@
+/* === Likened Brand Kit === */
+/* Canonical source for all brand tokens (colors, spacing, fonts, shadows) */
+/* Used by: landing page, webapp, chrome extension                         */
+/* Font path is relative to dist/css/ output — do not move @font-face      */
+
+@font-face {
+  font-family: "Open Sans";
+  src: url("../assets/fonts/OpenSans/OpenSans-Regular.woff2") format("woff2");
+  font-weight: 400; /* regular */
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Open Sans";
+  src: url("../assets/fonts/OpenSans/OpenSans-Bold.woff2") format("woff2");
+  font-weight: 700; /* bold */
+  font-style: normal; /* italic*/
+  font-display: swap;
+}
+
+:root {
+  /* color palette */
+  --likened-grey: #abb2bf; /* Borders, dividers */
+  --likened-mid-grey: #e9e9e9; /* Elevated surfaces (headers, emphasis) */
+  --likened-light-grey: #f9fafb; /* Subtle backgrounds */
+  --likened-dark-grey: #1f2937; /* Dark mode background */
+  --likened-darker-grey: #374151; /* Dark mode surfaces */
+  --likened-medium-grey: #4b5563; /* Dark mode elevated surfaces */
+  --likened-slate-grey: #9ca3af; /* Dark mode borders */
+  --likened-blue: #0078b6;
+  --likened-light-blue: #ddf0ff;
+  --likened-white: #ffffff;
+  --likened-black: #000000;
+  --likened-purple: #551a8b;
+  --likened-red: #ff4444;
+  --likened-red-hover: #cc0000;
+  --likened-amber: #f59e0b;
+  --likened-green: #22c55e;
+  --likened-green-hover: #16a34a;
+  --likened-green-alpha: hsla(
+    120,
+    60%,
+    50%,
+    0.3
+  ); /* Transparent green fill — animation overlays */
+  --likened-green-alpha-border: hsla(
+    120,
+    60%,
+    30%,
+    0.3
+  ); /* Transparent dark green — overlay borders */
+  --likened-green-alpha-stroke: hsla(
+    120,
+    60%,
+    30%,
+    0.8
+  ); /* Semi-opaque dark green — SVG strokes */
+  --likened-blue-alpha: rgba(
+    0,
+    120,
+    182,
+    0.125
+  ); /* Transparent blue fill — chart area fills */
+  --likened-red-alpha: hsla(
+    0,
+    100%,
+    50%,
+    0.5
+  ); /* Transparent red fill — animation overlays */
+  --likened-red-alpha-border: hsla(
+    0,
+    100%,
+    30%,
+    0.5
+  ); /* Transparent dark red — overlay borders and SVG strokes */
+  --likened-yellow: rgb(250, 204, 21);
+
+  --likened-border-radius: 8px;
+  --likened-border-thickness: 2px;
+  --likened-transition: all 200ms ease;
+
+  /* box-shadow */
+  --likened-box-shadow-button:
+    rgba(0, 0, 0, 0.35) 0px 8px 24px, rgba(0, 0, 0, 0.25) 0px 16px 48px,
+    rgba(0, 0, 0, 0.15) 0px 32px 96px;
+  --likened-box-shadow-hover: 0 4px 12px rgba(0, 120, 182, 0.15);
+  --likened-box-shadow-light: 0 2px 8px rgba(0, 0, 0, 0.1);
+  --likened-box-shadow-focus: 0 0 0 3px rgba(0, 120, 182, 0.1);
+
+  /* spacing */
+  --likened-padding: 8px; /* applied in all directions */
+  --likened-margin: 8px;
+  --likened-spacing: 4px;
+  --likened-thickness: 30px;
+  --likened-icon-button-size: 1rem;
+  --likened-icon-size: 0.75rem;
+  --likened-list-item-min-width: 200px; /* List items minimum width (content-driven) */
+  --likened-grid-gap: 4px;
+  --likened-line-height-reading: 1.75; /* Comfortable line-height for prose paragraphs */
+  --likened-paragraph-gap: 1.25rem; /* Vertical space between heading/paragraph/list blocks */
+
+  /* Grid structural dimensions (popup base UI) */
+  --likened-left-panel-width: 10px;
+  --likened-right-panel-width: 10px;
+  --likened-min-height: 4px;
+
+  /* Font properties */
+  --font-1-family: "Open Sans", sans-serif;
+  --font-1-weight: 700; /* bold */
+  --font-1-size: 1.5rem;
+
+  --font-2-family: "Courier New", monospace;
+  --font-2-weight: 700;
+  --font-2-size: 1rem;
+
+  --font-3-family: "Open Sans", sans-serif;
+  --font-3-weight: 400; /* normal */
+  --font-3-size: 1rem;
+}
+
+/* Dark theme - CSS variable swap (KISS principle) */
+.dark {
+  /* Semantic colors: inverted for visibility in dark mode.
+  hard-coded to avoid circular ref */
+  --likened-black: #ffffff; /* var(--likened-white) */
+  --likened-white: #1f2937; /* var(--likened-dark-grey) */
+  --likened-grey: #9ca3af; /* var(--likened-slate-grey) */
+  --likened-mid-grey: #4b5563; /* var(--likened-medium-grey) */
+  --likened-light-grey: #374151; /* var(--likened-darker-grey) */
+  --likened-blue: #ddf0ff; /* var(--likened-light-blue) */
+  --likened-light-blue: #374151; /* var(--likened-mid-grey) */
+  --likened-purple: #a78bfa; /* light violet — readable on dark-grey background */
+
+  /* Non-semantic colors: no visual distinction needed in dark mode, stay same */
+  /* --likened-red, --likened-red-hover, --likened-green, --likened-green-hover unset (inherit light mode values) */
+}
+
+.font-1 {
+  font-family: var(--font-1-family);
+  font-weight: var(--font-1-weight);
+  font-size: var(--font-1-size);
+  font-style: normal;
+}
+.font-2 {
+  font-family: var(
+    --font-2-family
+  ); /* Courier New is a system font — available on Windows, macOS, and Linux by default */
+  font-weight: var(--font-2-weight);
+  font-size: var(--font-2-size);
+  font-style: normal;
+}
+.font-3 {
+  font-family: var(--font-3-family);
+  font-weight: var(--font-3-weight);
+  font-size: var(--font-3-size);
+  font-style: normal;
+}
+
+/* === Color Utilities ===
+   Single-responsibility text-color classes — compose in HTML.
+   Each maps 1-to-1 to a palette token.
+*/
+.color-black {
+  color: var(--likened-black);
+}
+.color-grey {
+  color: var(--likened-grey);
+}
+.color-dark-grey {
+  color: var(--likened-dark-grey);
+}
+.color-blue {
+  color: var(--likened-blue);
+}
+.color-green {
+  color: var(--likened-green);
+}
+.color-red {
+  color: var(--likened-red);
+}
+.color-yellow {
+  color: var(--likened-yellow);
+}

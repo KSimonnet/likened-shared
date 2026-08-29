@@ -18,8 +18,8 @@ package-lock.json
 .DS_Store
 Thumbs.db
 
-# Build artifacts
-dist/
+# Build artifacts (keeping dist/ - it contains pre-built CSS for package distribution)
+# dist/
 build/
 
 # Logs
