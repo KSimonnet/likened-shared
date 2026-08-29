@@ -1,0 +1,32 @@
+{
+  "name": "@ksimonnet/likened-shared",
+  "version": "1.0.1",
+  "description": "Shared constants and branding kit for Likened webapp and extension",
+  "private": false,
+  "type": "module",
+  "main": "src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./constants": "./src/constants.js",
+    "./styles": "./dist/likened-brand-kit.css"
+  },
+  "files": [
+    "src",
+    "dist"
+  ],
+  "keywords": [
+    "likened",
+    "shared",
+    "constants",
+    "branding"
+  ],
+  "author": "KSimonnet",
+  "license": "MIT",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/KSimonnet/likened-shared.git"
+  }
+}
