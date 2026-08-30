@@ -24,7 +24,40 @@ jobs:
           registry-url: "https://npm.pkg.github.com"
           scope: "@ksimonnet"
 
+      - name: Preflight package auth
+        shell: bash
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          [[ -n "$NODE_AUTH_TOKEN" ]] || (echo "GITHUB_TOKEN is empty." && exit 1)
+          npm whoami --registry=https://npm.pkg.github.com >/dev/null || (
+            echo "GITHUB_TOKEN cannot authenticate to GitHub Packages." &&
+            echo "Check repository Settings > Actions > General > Workflow permissions = Read and write." &&
+            exit 1
+          )
+
+      - name: Check if version already published
+        id: version_check
+        shell: bash
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          PACKAGE_VERSION=$(node -p "require('./package.json').version")
+          if npm view @ksimonnet/likened-shared@$PACKAGE_VERSION version --registry=https://npm.pkg.github.com >/dev/null 2>&1; then
+            echo "already_published=true" >> "$GITHUB_OUTPUT"
+            echo "Version $PACKAGE_VERSION already exists. Skipping publish."
+          else
+            echo "already_published=false" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Publish to GitHub Packages
+        if: steps.version_check.outputs.already_published == 'false'
         run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Publish permission guidance
+        if: failure()
+        run: |
+          echo "If failure is E403 write_package, grant package access to this repository:"
+          echo "GitHub package page > Manage Actions access > add KSimonnet/likened-shared with Write role."
