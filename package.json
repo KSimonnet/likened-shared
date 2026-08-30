@@ -1,5 +1,5 @@
 {
-  "name": "@ksimonnet/likened-constants",
+  "name": "@ksimonnet/likened-shared",
   "version": "1.0.1",
   "description": "Shared constants and branding kit for Likened webapp and extension",
   "private": false,
@@ -28,5 +28,9 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/KSimonnet/likened-shared.git"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/KSimonnet/likened-shared/issues"
+  },
+  "homepage": "https://github.com/KSimonnet/likened-shared#readme"
 }

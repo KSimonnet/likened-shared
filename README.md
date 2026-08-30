@@ -62,7 +62,7 @@ Or in CSS:
 
 ## Versioning
 
-This package uses semantic versioning. Current version: **1.0.0**
+This package uses semantic versioning. Current version: **1.0.1**
 
 ## Consumers
 
