@@ -1,6 +1,6 @@
 {
   "name": "@ksimonnet/likened-shared",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Shared constants and branding kit for Likened webapp and extension",
   "private": false,
   "type": "module",
