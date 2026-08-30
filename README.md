@@ -19,6 +19,17 @@ This package is published to GitHub Packages. Ensure your `.npmrc` is configured
 
 Set `NPM_TOKEN` or `GITHUB_TOKEN` in your CI environment.
 
+> [!NOTE]
+> Required GitHub UI settings for publishing from this repository:
+> 1. Repository workflow permissions must be set to **Read and write**:
+>    `KSimonnet/likened-shared -> Settings -> Actions -> General -> Workflow permissions`.
+> 2. Package Actions access must grant **Write** role to this repository:
+>    `https://github.com/users/KSimonnet/packages/npm/package/likened-shared/settings`
+>    under **Manage Actions access** for `KSimonnet/likened-shared`.
+>
+> If either setting is missing, `npm publish` in GitHub Actions can fail with
+> `403 permission_denied: write_package`.
+
 ## Usage
 
 #### Constants
