@@ -52,12 +52,14 @@ jobs:
 
       - name: Publish to GitHub Packages
         if: steps.version_check.outputs.already_published == 'false'
-        run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: npm publish
 
       - name: Publish permission guidance
         if: failure()
         run: |
-          echo "If failure is E403 write_package, grant package access to this repository:"
-          echo "GitHub package page > Manage Actions access > add KSimonnet/likened-shared with Write role."
+          echo "If failure is E403 write_package, verify both settings:"
+          echo "1. Repository Settings > Actions > General > Workflow permissions = Read and write"
+          echo "2. Package Settings > Manage Actions access > KSimonnet/likened-shared has Write role"
+          echo "   https://github.com/users/KSimonnet/packages/npm/package/likened-shared/settings"
