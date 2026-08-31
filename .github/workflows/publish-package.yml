@@ -1,5 +1,10 @@
 name: Publish Package
 
+# Publishing note:
+# - Uses the built-in GITHUB_TOKEN only (no personal token fallback).
+# - `permissions: packages: write` grants publish rights for this workflow run.
+# - npm auth is wired via NODE_AUTH_TOKEN=${{ secrets.GITHUB_TOKEN }}.
+
 on:
   push:
     branches:
